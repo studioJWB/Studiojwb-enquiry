@@ -64,7 +64,7 @@
   .err-msg { font-size: 12px; color: #b94040; margin-top: 5px; display: none; }
   .field.invalid input, .field.invalid textarea { border-color: #b94040; }
   .submit-wrap { padding-top: 2rem; border-top: 1px solid var(--border); }
-  .submit-btn { width: 100%; padding: 15px 24px; font-family: var(--serif); font-size: 17px; font-weight: 400; color: var(--paper); background: var(--ink); border: none; border-radius: var(--radius); cursor: pointer; transition: opacity 0.15s; }
+  .submit-btn { width: 100%; padding: 15px 24px; font-family: var(--serif); font-size: 17px; font-weight: 400; color: var(--paper); background: var(--ink); border: none; border-radius: var(--radius); cursor: pointer; transition: opacity: 0.15s; }
   .submit-btn:hover { opacity: 0.82; }
   #state-sending, #state-success { display: none; }
   #state-sending { text-align: center; padding: 4rem 0; color: var(--ink2); font-size: 14px; }
@@ -85,7 +85,6 @@
     <span class="logo-mark">StudioJWB</span>
     <span class="logo-tag">Wedding enquiry</span>
   </header>
-
   <div id="state-form">
     <div class="intro">
       <h1>Tell me about<br/><em>your wedding day</em></h1>
@@ -96,48 +95,46 @@
         <p>Heads up: this is the first time I'm using a form like this. I'm moving toward a more structured client setup, so appreciate you bearing with me. Once you hit send I'll come back to you with a proper proposal.</p>
       </div>
     </div>
-
     <div class="section">
       <div class="section-eyebrow">01 — The basics</div>
       <div class="field-row">
         <div class="field" id="f-name">
-          <label class="field-label" for="i-name">Your name</label>
-          <input type="text" id="i-name" placeholder="Full name" autocomplete="name" />
+          <label class="field-label">Your name</label>
+          <input type="text" id="i-name" placeholder="Full name" />
           <div class="err-msg">Please add your name</div>
         </div>
         <div class="field" id="f-email">
-          <label class="field-label" for="i-email">Email address</label>
-          <input type="email" id="i-email" placeholder="you@example.com" autocomplete="email" />
+          <label class="field-label">Email address</label>
+          <input type="email" id="i-email" placeholder="you@example.com" />
           <div class="err-msg">Please add a valid email</div>
         </div>
       </div>
       <div class="field-row">
         <div class="field">
-          <label class="field-label" for="i-date">Wedding date</label>
+          <label class="field-label">Wedding date</label>
           <input type="date" id="i-date" value="2025-07-29" />
         </div>
         <div class="field">
-          <label class="field-label" for="i-start">Start time (approx.)</label>
+          <label class="field-label">Start time (approx.)</label>
           <input type="time" id="i-start" />
         </div>
       </div>
       <div class="field-row">
         <div class="field">
-          <label class="field-label" for="i-finish">Finish time (approx.)</label>
+          <label class="field-label">Finish time (approx.)</label>
           <input type="time" id="i-finish" />
         </div>
         <div class="field">
-          <label class="field-label" for="i-guests">Approximate guest count</label>
+          <label class="field-label">Approximate guest count</label>
           <input type="number" id="i-guests" placeholder="e.g. 60" min="1" />
         </div>
       </div>
       <div class="field">
-        <label class="field-label" for="i-venue">Venue name & location</label>
+        <label class="field-label">Venue name & location</label>
         <div class="field-hint">Doesn't need to be confirmed — city or area is fine</div>
         <input type="text" id="i-venue" placeholder="e.g. Standesamt Mitte, Berlin" />
       </div>
     </div>
-
     <div class="section">
       <div class="section-eyebrow">02 — What you're looking for</div>
       <div class="field">
@@ -172,7 +169,6 @@
         </div>
       </div>
     </div>
-
     <div class="section">
       <div class="section-eyebrow">03 — Style & feel</div>
       <div class="field">
@@ -198,32 +194,31 @@
         <div class="mood-list" id="mood-list"></div>
       </div>
       <div class="field">
-        <label class="field-label" for="i-shots">Any specific shots you'd love?</label>
+        <label class="field-label">Any specific shots you'd love?</label>
         <div class="field-hint">Ring detail, first look, family portraits — anything goes</div>
         <textarea id="i-shots" placeholder="Tell me what matters most..."></textarea>
       </div>
     </div>
-
     <div class="section">
       <div class="section-eyebrow">04 — Budget</div>
       <div class="field">
         <label class="field-label">Do you have a rough budget in mind?</label>
         <div class="field-hint">No commitment — just helps me put the right package together</div>
         <div class="budget-grid" id="g-budget">
-          <div class="budget-card" data-v="Under €500 — ceremony only">
-            <div class="b-range">Under €500</div>
+          <div class="budget-card" data-v="Under 500 — ceremony only">
+            <div class="b-range">Under 500</div>
             <div class="b-scope">Ceremony coverage only</div>
           </div>
-          <div class="budget-card" data-v="€500–€1,000 — half day">
-            <div class="b-range">€500 – €1,000</div>
+          <div class="budget-card" data-v="500 to 1000 — half day">
+            <div class="b-range">500 – 1,000</div>
             <div class="b-scope">Half day coverage</div>
           </div>
-          <div class="budget-card" data-v="€1,000–€2,000 — full day">
-            <div class="b-range">€1,000 – €2,000</div>
+          <div class="budget-card" data-v="1000 to 2000 — full day">
+            <div class="b-range">1,000 – 2,000</div>
             <div class="b-scope">Full day coverage</div>
           </div>
-          <div class="budget-card" data-v="€2,000+ — full day with video">
-            <div class="b-range">€2,000+</div>
+          <div class="budget-card" data-v="2000 plus — full day with video">
+            <div class="b-range">2,000+</div>
             <div class="b-scope">Full day + video</div>
           </div>
           <div class="budget-card wide" data-v="Not sure — send me options">
@@ -233,11 +228,10 @@
         </div>
       </div>
     </div>
-
     <div class="section">
       <div class="section-eyebrow">05 — Logistics & anything else</div>
       <div class="field">
-        <label class="field-label" for="i-venue-notes">Any venue restrictions I should know about?</label>
+        <label class="field-label">Any venue restrictions I should know about?</label>
         <div class="field-hint">Flash photography, indoor/outdoor, multiple locations, access limitations</div>
         <textarea id="i-venue-notes" placeholder="Anything relevant..."></textarea>
       </div>
@@ -258,141 +252,134 @@
         </div>
       </div>
       <div class="field">
-        <label class="field-label" for="i-notes">Anything else you'd like to tell me?</label>
+        <label class="field-label">Anything else you'd like to tell me?</label>
         <div class="field-hint">Questions, concerns, things that matter — open floor</div>
         <textarea id="i-notes" placeholder="Whatever's on your mind..."></textarea>
       </div>
     </div>
-
     <div class="submit-wrap">
-      <button type="button" class="submit-btn" onclick="submitForm()">Send enquiry →</button>
+      <button type="button" class="submit-btn" onclick="submitForm()">Send enquiry</button>
       <div class="err-banner" id="err-banner">Something went wrong — please try again or email judd.burgess@live.com.au directly.</div>
     </div>
   </div>
-
   <div id="state-sending">
     <div class="spinner"></div>
     <p>Sending your enquiry...</p>
   </div>
-
   <div id="state-success">
-    <div class="success-glyph">✦</div>
+    <div class="success-glyph">&#10022;</div>
     <h2>You're all done — thanks!</h2>
     <p>I'll go through everything and come back to you with a proper proposal within a couple of days. Really looking forward to being part of your day.</p>
     <p class="sig">— Judd, StudioJWB</p>
   </div>
 </div>
-
 <script>
-  document.querySelectorAll('[data-single]').forEach(group => {
-    group.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        group.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
-        chip.classList.add('on');
-      });
+document.querySelectorAll('[data-single]').forEach(function(group) {
+  group.querySelectorAll('.chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      group.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('on'); });
+      chip.classList.add('on');
     });
   });
-  document.querySelectorAll('[data-multi]').forEach(group => {
-    group.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => chip.classList.toggle('on'));
-    });
+});
+document.querySelectorAll('[data-multi]').forEach(function(group) {
+  group.querySelectorAll('.chip').forEach(function(chip) {
+    chip.addEventListener('click', function() { chip.classList.toggle('on'); });
   });
-  document.querySelectorAll('#g-budget .budget-card').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('#g-budget .budget-card').forEach(c => c.classList.remove('on'));
-      card.classList.add('on');
-    });
+});
+document.querySelectorAll('#g-budget .budget-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('#g-budget .budget-card').forEach(function(c) { c.classList.remove('on'); });
+    card.classList.add('on');
   });
-
-  const moods = [];
-  function addMood() {
-    const el = document.getElementById('i-mood-url');
-    const v = el.value.trim();
-    if (!v) return;
-    moods.push(v);
-    renderMoods();
-    el.value = '';
+});
+var moods = [];
+function addMood() {
+  var el = document.getElementById('i-mood-url');
+  var v = el.value.trim();
+  if (!v) return;
+  moods.push(v);
+  renderMoods();
+  el.value = '';
+}
+function removeMood(i) { moods.splice(i, 1); renderMoods(); }
+function renderMoods() {
+  var html = '';
+  for (var i = 0; i < moods.length; i++) {
+    var short = moods[i].replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
+    html += '<div class="mood-item"><span>' + short + '</span><button type="button" onclick="removeMood(' + i + ')">x</button></div>';
   }
-  function removeMood(i) { moods.splice(i, 1); renderMoods(); }
-  function renderMoods() {
-    document.getElementById('mood-list').innerHTML = moods.map((m, i) => {
-      const short = m.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
-      return `<div class="mood-item"><span>${short}</span><button type="button" onclick="removeMood(${i})">×</button></div>`;
-    }).join('');
-  }
-  document.getElementById('i-mood-url').addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); addMood(); }
-  });
-
-  function getChips(id) {
-    return [...document.querySelectorAll(`#${id} .chip.on`)].map(c => c.dataset.v).join(', ');
-  }
-  function getBudget() {
-    const sel = document.querySelector('#g-budget .budget-card.on');
-    return sel ? sel.dataset.v : 'Not selected';
-  }
-
-  function validate() {
-    let ok = true;
-    const name = document.getElementById('i-name');
-    const email = document.getElementById('i-email');
-    const nf = document.getElementById('f-name');
-    const ef = document.getElementById('f-email');
-    if (!name.value.trim()) { nf.classList.add('invalid'); nf.querySelector('.err-msg').style.display = 'block'; ok = false; }
-    else { nf.classList.remove('invalid'); nf.querySelector('.err-msg').style.display = 'none'; }
-    if (!email.value.trim() || !email.value.includes('@')) { ef.classList.add('invalid'); ef.querySelector('.err-msg').style.display = 'block'; ok = false; }
-    else { ef.classList.remove('invalid'); ef.querySelector('.err-msg').style.display = 'none'; }
-    return ok;
-  }
-
-  async function submitForm() {
-    if (!validate()) { document.getElementById('i-name').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-
-    const data = new FormData();
-    data.append('access_key', '436294a8-0064-4f0f-ab7e-9c9e5d838f28');
-    data.append('subject', 'New wedding enquiry — StudioJWB');
-    data.append('from_name', 'StudioJWB Enquiry Form');
-    data.append('name', document.getElementById('i-name').value.trim());
-    data.append('email', document.getElementById('i-email').value.trim());
-    data.append('wedding_date', document.getElementById('i-date').value);
-    data.append('start_time', document.getElementById('i-start').value);
-    data.append('finish_time', document.getElementById('i-finish').value);
-    data.append('guests', document.getElementById('i-guests').value);
-    data.append('venue', document.getElementById('i-venue').value.trim());
-    data.append('coverage_type', getChips('g-coverage'));
-    data.append('moments', getChips('g-moments'));
-    data.append('film_preference', getChips('g-film'));
-    data.append('style_vibe', getChips('g-style'));
-    data.append('mood_boards', moods.join(' | '));
-    data.append('specific_shots', document.getElementById('i-shots').value.trim());
-    data.append('budget', getBudget());
-    data.append('venue_restrictions', document.getElementById('i-venue-notes').value.trim());
-    data.append('delivery_preference', getChips('g-delivery'));
-    data.append('second_photographer', getChips('g-second'));
-    data.append('additional_notes', document.getElementById('i-notes').value.trim());
-
-    document.getElementById('state-form').style.display = 'none';
-    document.getElementById('state-sending').style.display = 'block';
-
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: data
-      });
-      const result = await res.json();
-      document.getElementById('state-sending').style.display = 'none';
-      if (result.success) {
-        document.getElementById('state-success').style.display = 'block';
-      } else {
-        document.getElementById('state-form').style.display = 'block';
-        document.getElementById('err-banner').style.display = 'block';
-      }
-    } catch(e) {
-      document.getElementById('state-sending').style.display = 'none';
+  document.getElementById('mood-list').innerHTML = html;
+}
+document.getElementById('i-mood-url').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); addMood(); }
+});
+function getChips(id) {
+  var chips = document.querySelectorAll('#' + id + ' .chip.on');
+  var vals = [];
+  for (var i = 0; i < chips.length; i++) { vals.push(chips[i].getAttribute('data-v')); }
+  return vals.join(', ');
+}
+function getBudget() {
+  var sel = document.querySelector('#g-budget .budget-card.on');
+  return sel ? sel.getAttribute('data-v') : 'Not selected';
+}
+function validate() {
+  var ok = true;
+  var name = document.getElementById('i-name');
+  var email = document.getElementById('i-email');
+  var nf = document.getElementById('f-name');
+  var ef = document.getElementById('f-email');
+  if (!name.value.trim()) { nf.classList.add('invalid'); nf.querySelector('.err-msg').style.display = 'block'; ok = false; }
+  else { nf.classList.remove('invalid'); nf.querySelector('.err-msg').style.display = 'none'; }
+  if (!email.value.trim() || email.value.indexOf('@') === -1) { ef.classList.add('invalid'); ef.querySelector('.err-msg').style.display = 'block'; ok = false; }
+  else { ef.classList.remove('invalid'); ef.querySelector('.err-msg').style.display = 'none'; }
+  return ok;
+}
+function submitForm() {
+  if (!validate()) { document.getElementById('i-name').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  var data = new FormData();
+  data.append('access_key', '436294a8-0064-4f0f-ab7e-9c9e5d838f28');
+  data.append('subject', 'New wedding enquiry - StudioJWB');
+  data.append('from_name', 'StudioJWB Enquiry Form');
+  data.append('name', document.getElementById('i-name').value.trim());
+  data.append('email', document.getElementById('i-email').value.trim());
+  data.append('wedding_date', document.getElementById('i-date').value);
+  data.append('start_time', document.getElementById('i-start').value);
+  data.append('finish_time', document.getElementById('i-finish').value);
+  data.append('guests', document.getElementById('i-guests').value);
+  data.append('venue', document.getElementById('i-venue').value.trim());
+  data.append('coverage_type', getChips('g-coverage'));
+  data.append('moments', getChips('g-moments'));
+  data.append('film_preference', getChips('g-film'));
+  data.append('style_vibe', getChips('g-style'));
+  data.append('mood_boards', moods.join(' | '));
+  data.append('specific_shots', document.getElementById('i-shots').value.trim());
+  data.append('budget', getBudget());
+  data.append('venue_restrictions', document.getElementById('i-venue-notes').value.trim());
+  data.append('delivery_preference', getChips('g-delivery'));
+  data.append('second_photographer', getChips('g-second'));
+  data.append('additional_notes', document.getElementById('i-notes').value.trim());
+  document.getElementById('state-form').style.display = 'none';
+  document.getElementById('state-sending').style.display = 'block';
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://api.web3forms.com/submit');
+  xhr.onload = function() {
+    document.getElementById('state-sending').style.display = 'none';
+    if (xhr.status === 200) {
+      document.getElementById('state-success').style.display = 'block';
+    } else {
       document.getElementById('state-form').style.display = 'block';
       document.getElementById('err-banner').style.display = 'block';
     }
-  }
+  };
+  xhr.onerror = function() {
+    document.getElementById('state-sending').style.display = 'none';
+    document.getElementById('state-form').style.display = 'block';
+    document.getElementById('err-banner').style.display = 'block';
+  };
+  xhr.send(data);
+}
 </script>
 </body>
 </html>
