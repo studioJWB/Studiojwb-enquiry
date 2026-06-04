@@ -32,15 +32,14 @@
   .notice { display: flex; gap: 12px; margin-top: 1.5rem; padding: 14px 16px; background: var(--paper2); border: 1px solid var(--border); border-radius: var(--radius); }
   .notice-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink3); flex-shrink: 0; margin-top: 7px; }
   .notice p { font-size: 13px; color: var(--ink3); line-height: 1.65; }
-  .section { margin-bottom: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); opacity: 1; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .section.visible { opacity: 1; transform: none; }
+  .section { margin-bottom: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
   .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; }
   .field { margin-bottom: 1.5rem; }
   .field-label { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
   .field-hint { font-size: 12px; color: var(--ink3); margin-bottom: 8px; font-weight: 300; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  input[type="text"], input[type="email"], input[type="date"], input[type="time"], input[type="number"], input[type="url"], textarea, select { width: 100%; background: transparent; border: 1px solid var(--border2); border-radius: var(--radius); padding: 10px 13px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.15s; -webkit-appearance: none; }
-  input:focus, textarea:focus, select:focus { border-color: var(--ink); }
+  input[type="text"], input[type="email"], input[type="date"], input[type="time"], input[type="number"], input[type="url"], textarea { width: 100%; background: transparent; border: 1px solid var(--border2); border-radius: var(--radius); padding: 10px 13px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.15s; -webkit-appearance: none; }
+  input:focus, textarea:focus { border-color: var(--ink); }
   textarea { height: 90px; resize: vertical; }
   input::placeholder, textarea::placeholder { color: var(--ink3); }
   .chip-group { display: flex; flex-wrap: wrap; gap: 7px; }
@@ -98,7 +97,7 @@
       </div>
     </div>
 
-    <div class="section" data-section>
+    <div class="section">
       <div class="section-eyebrow">01 — The basics</div>
       <div class="field-row">
         <div class="field" id="f-name">
@@ -139,7 +138,7 @@
       </div>
     </div>
 
-    <div class="section" data-section>
+    <div class="section">
       <div class="section-eyebrow">02 — What you're looking for</div>
       <div class="field">
         <label class="field-label">Photos, video, or both?</label>
@@ -174,7 +173,7 @@
       </div>
     </div>
 
-    <div class="section" data-section>
+    <div class="section">
       <div class="section-eyebrow">03 — Style & feel</div>
       <div class="field">
         <label class="field-label">What's the vibe you're going for?</label>
@@ -205,7 +204,7 @@
       </div>
     </div>
 
-    <div class="section" data-section>
+    <div class="section">
       <div class="section-eyebrow">04 — Budget</div>
       <div class="field">
         <label class="field-label">Do you have a rough budget in mind?</label>
@@ -235,7 +234,7 @@
       </div>
     </div>
 
-    <div class="section" data-section>
+    <div class="section">
       <div class="section-eyebrow">05 — Logistics & anything else</div>
       <div class="field">
         <label class="field-label" for="i-venue-notes">Any venue restrictions I should know about?</label>
@@ -265,7 +264,7 @@
       </div>
     </div>
 
-    <div class="submit-wrap section" data-section>
+    <div class="submit-wrap">
       <button type="button" class="submit-btn" onclick="submitForm()">Send enquiry →</button>
       <div class="err-banner" id="err-banner">Something went wrong — please try again or email judd.burgess@live.com.au directly.</div>
     </div>
@@ -285,11 +284,6 @@
 </div>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('[data-section]').forEach(s => observer.observe(s));
-
   document.querySelectorAll('[data-single]').forEach(group => {
     group.querySelectorAll('.chip').forEach(chip => {
       chip.addEventListener('click', () => {
@@ -354,11 +348,51 @@
   async function submitForm() {
     if (!validate()) { document.getElementById('i-name').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
 
-    const payload = {
-      access_key: '436294a8-0064-4f0f-ab7e-9c9e5d838f28',
-      subject: 'New wedding enquiry — StudioJWB',
-      from_name: 'StudioJWB Enquiry Form',
-      name: document.getElementById('i-name').value.trim(),
-      email: document.getElementById('i-email').value.trim(),
-      wedding_date: document.getElementById('i-date').value,
-      start_time: document.getElementById('i-st
+    const data = new FormData();
+    data.append('access_key', '436294a8-0064-4f0f-ab7e-9c9e5d838f28');
+    data.append('subject', 'New wedding enquiry — StudioJWB');
+    data.append('from_name', 'StudioJWB Enquiry Form');
+    data.append('name', document.getElementById('i-name').value.trim());
+    data.append('email', document.getElementById('i-email').value.trim());
+    data.append('wedding_date', document.getElementById('i-date').value);
+    data.append('start_time', document.getElementById('i-start').value);
+    data.append('finish_time', document.getElementById('i-finish').value);
+    data.append('guests', document.getElementById('i-guests').value);
+    data.append('venue', document.getElementById('i-venue').value.trim());
+    data.append('coverage_type', getChips('g-coverage'));
+    data.append('moments', getChips('g-moments'));
+    data.append('film_preference', getChips('g-film'));
+    data.append('style_vibe', getChips('g-style'));
+    data.append('mood_boards', moods.join(' | '));
+    data.append('specific_shots', document.getElementById('i-shots').value.trim());
+    data.append('budget', getBudget());
+    data.append('venue_restrictions', document.getElementById('i-venue-notes').value.trim());
+    data.append('delivery_preference', getChips('g-delivery'));
+    data.append('second_photographer', getChips('g-second'));
+    data.append('additional_notes', document.getElementById('i-notes').value.trim());
+
+    document.getElementById('state-form').style.display = 'none';
+    document.getElementById('state-sending').style.display = 'block';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const result = await res.json();
+      document.getElementById('state-sending').style.display = 'none';
+      if (result.success) {
+        document.getElementById('state-success').style.display = 'block';
+      } else {
+        document.getElementById('state-form').style.display = 'block';
+        document.getElementById('err-banner').style.display = 'block';
+      }
+    } catch(e) {
+      document.getElementById('state-sending').style.display = 'none';
+      document.getElementById('state-form').style.display = 'block';
+      document.getElementById('err-banner').style.display = 'block';
+    }
+  }
+</script>
+</body>
+</html>
